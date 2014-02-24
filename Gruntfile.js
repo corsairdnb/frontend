@@ -3,12 +3,12 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
-            options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-            },
+            /*options: {
+                banner: '*//*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> *//*\n'
+            },*/
             build: {
-                src: 'src/<%= pkg.name %>.js',
-                dest: 'build/<%= pkg.name %>.min.js'
+                src: ['js/*.js','js/!*.min.js'],
+                dest: 'js/main.min.js'
             }
         },
         stylus: {
@@ -58,16 +58,11 @@ module.exports = function (grunt) {
         }
     });
 
-    /*grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-stylus');
-    grunt.loadNpmTasks('grunt-contrib-watch');*/
-
     require('load-grunt-tasks')(grunt);
 
+    grunt.registerTask('init', ['open', 'connect', 'stylus', 'uglify']);
     grunt.registerTask('default', ['uglify', 'stylus', 'cssmin']);
     grunt.registerTask('dev',[
-        'open',
         'connect',
         'stylus',
         'watch'
