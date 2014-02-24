@@ -7,3 +7,5 @@ Includes:
 * html5shiv.js
 * stylus compiler
 * uglify js
+* file watcher
+* working on localhost
