@@ -14,7 +14,7 @@ module.exports = function (grunt) {
         stylus: {
             compile: {
                 files: {
-                    'css/build.css': ['styl/*.styl']
+                    'css/dev/stylus.css': ['styl/*.styl']
                 },
                 options: {
                     compress: false
@@ -22,12 +22,10 @@ module.exports = function (grunt) {
             }
         },
         cssmin: {
-            minify: {
-                expand: true,
-                cwd: 'css/',
-                src: ['*.css', '!*.min.css'],
-                dest: 'css/main.css',
-                ext: '.min.css'
+            combine: {
+                files: {
+                    'css/prod/main.min.css': ['css/dev/normalize.css', 'css/dev/*.css']
+                }
             }
         },
         connect: {
