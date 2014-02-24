@@ -14,8 +14,7 @@ module.exports = function (grunt) {
         stylus: {
             compile: {
                 files: {
-                    'stylus.css': 'styl/stylus.styl'
-                    //'path/to/another.css': ['path/to/sources/*.styl', 'path/to/more/*.styl']
+                    'css/build.css': ['styl/*.styl']
                 },
                 options: {
                     compress: false
@@ -27,7 +26,7 @@ module.exports = function (grunt) {
                 expand: true,
                 cwd: 'css/',
                 src: ['*.css', '!*.min.css'],
-                dest: 'css/',
+                dest: 'css/main.css',
                 ext: '.min.css'
             }
         },
@@ -49,7 +48,7 @@ module.exports = function (grunt) {
         },
         watch: {
             stylus: {
-                files: ['*.styl'],
+                files: ['styl/*.styl'],
                 tasks: ['stylus']
             },
             files: '*.html',
@@ -70,7 +69,7 @@ module.exports = function (grunt) {
     grunt.registerTask('dev',[
         'open',
         'connect',
-        'sass',
+        'stylus',
         'watch'
     ]);
 
