@@ -22,7 +22,7 @@ module.exports = function (grunt) {
             }
         },
         cssmin: {
-            combine: {
+            compress: {
                 files: {
                     'css/prod/main.min.css': ['css/dev/normalize.css', 'css/dev/*.css']
                 }
